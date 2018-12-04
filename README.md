@@ -10,3 +10,6 @@ mail：2918089225@qq.com
 1、PID的调节，第一次用。不会调节
 2、PID调节的方法（from：https://www.yahboom.com/study/bc-uno）
   先调节角度环，速度换应该要置零；调节是都是从零开始调节。
+
+PID调节教程：
+1、https://blog.csdn.net/qq_24221271/article/details/80837203
