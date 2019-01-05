@@ -24,8 +24,8 @@ int IN4 = 5;
 int pwm;
 void pwm_cacul()
 {
-  if(angleY<-2.5)
-    pwm=angleY*20;
+  if(angleY<-2.2)
+    pwm=angleY*20;    //重的一头偏角为负
   else if(angleY>2.5)
     pwm=angleY*20;
   else
@@ -43,20 +43,25 @@ void loop() {
   if (abs(angleY) < 35) 
   {
     pwm_cacul();
-        if (pwm < 0)
-      {
-        digitalWrite(IN1, HIGH);
-        digitalWrite(IN2, LOW);
-        digitalWrite(IN3, LOW);
-        digitalWrite(IN4, HIGH);
-      }
-      else if (pwm > 0)
-      {
-        digitalWrite(IN1, LOW);
-        digitalWrite(IN2, HIGH);
-        digitalWrite(IN3, HIGH);
-        digitalWrite(IN4, LOW);
-      }
+    if (pwm < 0)
+    {
+      digitalWrite(IN1, HIGH);
+      digitalWrite(IN2, LOW);
+      digitalWrite(IN3, LOW);
+      digitalWrite(IN4, HIGH);
+    }
+    else if (pwm > 0)
+    {
+      digitalWrite(IN1, LOW);
+      digitalWrite(IN2, HIGH);
+      digitalWrite(IN3, HIGH);
+      digitalWrite(IN4, LOW);
+    }
+    int PWMr = abs(pwm);
+    int PWMl = abs(pwm);
+
+    analogWrite(ENB, max(PWMl, 40)); //PWM调速a==0-255  51  60
+    analogWrite(ENA, max(PWMr, 42)); //PWM调速a==0-255  54  60
   }
   else
   {//倒在地上
