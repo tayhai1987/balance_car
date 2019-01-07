@@ -36,8 +36,6 @@ void pwm_cacul()
 void loop() {
   mpu6050.update();
   angleY=mpu6050.getAngleY();
-  Serial.print("angleX : ");
-  Serial.print(angleX);
   Serial.print("\nangleY : ");
   Serial.print(angleY);
   if (abs(angleY) < 35) 
